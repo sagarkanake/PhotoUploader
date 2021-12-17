@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="contact-us">
+    <div class="banner">
+      <img src="{% static './assets/images/bg-banner.png' %}" alt="" class="img-fluid w-100">
+      <h1 class="text-center">
+        Dashboard
+      </h1>
+    </div>
+
+    <section class="container mt-5">
+      <h2 class="text-center">Welcome to Dashboard</h2>
+      <h4 class="text-center text-white-50"> 
+        <font color="FF9C33"><p style="display:inline">Hi,<b> <font color="FF9C33" style="font-size:30px" >{{username}} </font> </b>Hope you having a good day </p>
+      </font>
+      </h4>
+
+      <div class="table-responsive- mt-3">
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Sr.no</th>
+              <th scope="col">Users Name</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Email ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <th scope="row">1</th>
+              <td><i>{{username}}<i></td>
+              <td>{{firstname}}</td>
+              <td>{{lastname}}</td>
+              <td>{{phone_number}}</td>
+              <td>{{email}}</td>
+              <td>
+                <div class="btn btn-accent">Go to Page </div>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+  </main>
+{% endblock %}
+

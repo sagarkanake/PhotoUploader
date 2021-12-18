@@ -33,7 +33,8 @@ Simple task i.e a project with user register + Login . Register page has name, p
 ## Prerequisites : 
   * Make sure you have all concepts cleared in python language .
   * The deep knowledge about the Django Frameweork espesicially models and views
-  * The Django messages framework . 
+  * The Django messages framework .
+  * The django rest framework .
 
 
 # Logic 
@@ -97,12 +98,13 @@ Used the messages framework to display a one-time notification message (also kno
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install 
 # Installation
 django = "*"
-
+django_rest_framework = "*"
 pillow = "*"
 
 ```bash
 pipenv install Django
 pipenv install Pillow
+pipenv install djangorestframework
 
 
 #Usage

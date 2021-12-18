@@ -17,14 +17,17 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#Logic">Login</a></li>
+    <li><a href="#Logic">Logic</a></li>
     <li><a href="#Code">Code</a></li>
     <li><a href="#contributing">Installation</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-
+# Built With
+  Languages Used : Python , javascript , Html , CSs .
+  Frmaework Used : Python Django Framework .
+# Getting Started 
 Simple task i.e a project with user register + Login . Register page has name, phone_number, email(unique=True) .Created a welcome page showing name of respective logged in user.
 # Logic 
 I have modified the Django user model. The modification involves phone field and email having a unique constraint . I Used a customized User model  to store phone_number and assign unique key constraint to email id . Beacuase default User model is not have the phone_number field and also we can't logged in the user through email id .

@@ -14,7 +14,6 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        
       </ul>
     </li>
     <li><a href="#Logic">Logic</a></li>

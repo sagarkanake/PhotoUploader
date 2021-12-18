@@ -37,8 +37,6 @@
      * templates
         * accounts
         * inludes
-             * footer.html
-             * header.html
         * base.html
         * messages.html 
      * manage.py

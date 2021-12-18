@@ -30,19 +30,27 @@
 ## After creation, your project should look like this:
 
 * my-app/
- *  README.md
-  * node_modules/
-  * package.json
-  * public/
-    * index.html
-    * favicon.ico
-  * src/
-    * App.css
-    * App.js
-    * App.test.js
-    * index.css
-    * index.js
-    * logo.svg  
+  * setup
+     * accounts
+         * api 
+     * setup
+          * static
+               * Admin
+               * assets
+               * css 
+               * js 
+          *  urls.py
+          *  views.py
+          *  models.py
+          *  admin.py
+     * static
+          * assets
+          * css
+          * js 
+     * templates
+     * manage.py
+  * README.md
+  
   
 # Built With
  *  Languages Used : Python , javascript , Html , CSs .

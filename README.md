@@ -31,6 +31,11 @@
  *  Framework Used : Python Django Framework .
 # Getting Started 
 Simple task i.e a project with user register + Login . Register page has name, phone_number, email(unique=True) .Created a welcome page showing name of respective logged in user.
+* Prerequisites : 
+   Make sure you have all concepts cleared in python language .
+   The deep knowledge about the Django Frameweork espesicially models and views
+   The Django messages framework . 
+
 
 # Logic 
 I have modified the Django user model. The modification involves phone field and email having a unique constraint . I Used a customized User model  to store phone_number and assign unique key constraint to email id . Beacuase default User model is not have the phone_number field and also we can't logged in the user through email id .

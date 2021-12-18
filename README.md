@@ -24,6 +24,7 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
+  </details>
 # Built With
   Languages Used : Python , javascript , Html , CSs .
   Frmaework Used : Python Django Framework .

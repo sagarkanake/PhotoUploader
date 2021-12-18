@@ -27,8 +27,8 @@
   </details>
   
 ## Built With
-  Languages Used : Python , javascript , Html , CSs .
-  Frmaework Used : Python Django Framework .
+ *  Languages Used : Python , javascript , Html , CSs .
+ *  Framework Used : Python Django Framework .
 ## Getting Started 
 Simple task i.e a project with user register + Login . Register page has name, phone_number, email(unique=True) .Created a welcome page showing name of respective logged in user.
 

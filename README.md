@@ -34,17 +34,11 @@
            * api 
      * setup
            * static
-                 * assets
-                 * css 
-                 * js 
            *  urls.py
            *  views.py
            *  models.py
            *  admin.py
      * static
-           * assets
-           * css
-           * js 
      * templates
      * manage.py
 * README.md

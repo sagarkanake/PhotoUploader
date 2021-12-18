@@ -97,9 +97,9 @@ Used the messages framework to display a one-time notification message (also kno
 # Packages
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install 
 # Installation
-django = "*"
-django_rest_framework = "*"
-pillow = "*"
+*  django = "*"
+*  django_rest_framework = "*"
+
 
 ```bash
 pipenv install Django

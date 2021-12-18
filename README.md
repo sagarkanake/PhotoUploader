@@ -34,7 +34,6 @@
            * api 
      * setup
            * static
-                 * Admin
                  * assets
                  * css 
                  * js 

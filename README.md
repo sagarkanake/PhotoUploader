@@ -35,8 +35,8 @@ Simple task i.e a project with user register + Login . Register page has name, p
 # Logic 
 I have modified the Django user model. The modification involves phone field and email having a unique constraint . I Used a customized User model  to store phone_number and assign unique key constraint to email id . Beacuase default User model is not have the phone_number field and also we can't logged in the user through email id .
 With the help of this CustomUser model Authentication of user is  performed through email id . 
-## Code
-# Custom User Model
+# Code
+## Custom User Model
 Used to authenticate User with emal id and and eamil id have been unique key constraint 
 * accounts/models.py
 ```python

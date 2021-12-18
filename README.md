@@ -27,7 +27,7 @@
   
 # Built With
  *  Languages Used : Python , javascript , Html , CSs .
- *  Framework Used : Python Django Framework .
+ *  Framework Used : Python Django Framework , Django Rest Framework .
 # Getting Started 
 Simple task i.e a project with user register + Login . Register page has name, phone_number, email(unique=True) .Created a welcome page showing name of respective logged in user.
 ## Prerequisites : 

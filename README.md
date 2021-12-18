@@ -31,13 +31,7 @@
 
 * setup
      * accounts
-           * api 
      * setup
-           * static
-           *  urls.py
-           *  views.py
-           *  models.py
-           *  admin.py
      * static
      * templates
      * manage.py

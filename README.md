@@ -103,7 +103,6 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install
 
 ```bash
 pipenv install Django
-pipenv install Pillow
 pipenv install djangorestframework
 
 

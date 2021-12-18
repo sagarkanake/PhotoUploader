@@ -31,9 +31,14 @@
 
 * setup
      * accounts
+        * api 
      * setup
      * static
      * templates
+        * accounts
+        * inludes
+        * base.html
+        * message.html 
      * manage.py
 * README.md
   

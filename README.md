@@ -93,8 +93,7 @@ pip install python manage.py startapp app_name
 #To Run the server
 python manage.py runserver
 
-#
-foobar.singularize('phenomena')
+
 ```
 
 ## Contributing

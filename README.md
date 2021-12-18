@@ -29,27 +29,26 @@
   
 ## After creation, your project should look like this:
 
-* my-app/
-  * setup
+* setup
      * accounts
-         * api 
+           * api 
      * setup
-          * static
-               * Admin
-               * assets
-               * css 
-               * js 
-          *  urls.py
-          *  views.py
-          *  models.py
-          *  admin.py
+           * static
+                 * Admin
+                 * assets
+                 * css 
+                 * js 
+           *  urls.py
+           *  views.py
+           *  models.py
+           *  admin.py
      * static
-          * assets
-          * css
-          * js 
+           * assets
+           * css
+           * js 
      * templates
      * manage.py
-  * README.md
+* README.md
   
   
 # Built With

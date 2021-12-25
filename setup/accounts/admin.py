@@ -6,7 +6,7 @@ from .models import Student, Teacher, Admin
 class CustomUserAdmin(UserAdmin):
     """Define admin model for custom User model with no username field."""
     fieldsets = (
-        (None, {'fields': ('username','email', 'password', 'phone_number', 'is_student', 'is_teacher','is_admin')}),
+        (None, {'fields': ('username','email', 'password', 'phone_number', 'is_student', 'is_teacher','is_admin', 'created_date')}),
         (_('Personal info'), {'fields': ('first_name', 'last_name')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),

@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from datetime import datetime
+
 
 # Create your models here.
 class CustomUserManager(BaseUserManager):
@@ -40,6 +42,8 @@ class CustomUser(AbstractUser):
     is_student = models.BooleanField(default= True)
     is_teacher = models.BooleanField(default= False)
     is_admin = models.BooleanField(default = False)
+    created_date = models.DateTimeField(default=datetime.now, blank=True)
+    
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

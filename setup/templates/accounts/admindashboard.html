@@ -30,18 +30,20 @@
             </tr>
           </thead>
           <tbody>
-            
+            {%  for user in data %}
             <tr>
               <th scope="row">1</th>
-              <td><i>{{username}}<i></td>
-              <td>{{firstname}}</td>
-              <td>{{lastname}}</td>
-              <td>{{phone_number}}</td>
-              <td>{{email}}</td>
+              <td><i>{{user.username}}<i></td>
+              <td>{{user.firstname}}</td>
+              <td>{{user.lastname}}</td>
+              <td>{{user.phone_number}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.add}}</td>
               <td>
                 <div class="btn btn-accent">Go to Page </div>
               </td>
             </tr>
+            {%endfor%}
             
           </tbody>
         </table>

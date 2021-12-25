@@ -82,7 +82,7 @@ def studentregister(request):
                     messages.error(request, 'Email already exists')
                     return redirect('studentregister')
                 else:
-                    user = CustomUser.objects.create_user(first_name=firstname, last_name=lastname, username=username, phone_number=phone_number, email=email, password=password)
+                    user = CustomUser.objects.create_user(is_student = True, first_name=firstname, last_name=lastname, username=username, phone_number=phone_number, email=email, password=password)
                     user.save()
                     student = Student.objects.create(user = user , standard = standard, add = add)
                     student.save()
@@ -116,9 +116,9 @@ def teacherregister(request):
                     messages.error(request, 'Email already exists')
                     return redirect('teacheradminregister')
                 else:
-                    user = CustomUser.objects.create_user(first_name=firstname, last_name=lastname, username=username, phone_number=phone_number, email=email, password=password)
+                    user = CustomUser.objects.create_user(is_teacher = True,first_name=firstname, last_name=lastname, username=username, phone_number=phone_number, email=email, password=password)
                     user.save()
-                    student = Student.objects.create(user = user , subject = subject, add = add)
+                    student = Teacher.objects.create(user = user , subject = subject, add = add)
                     student.save()
                     messages.success(request, 'Account created successfully')
                     return redirect('login')
@@ -149,9 +149,9 @@ def adminregister(request):
                     messages.error(request, 'Email already exists')
                     return redirect('adminregister')
                 else:
-                    user = CustomUser.objects.create_user(first_name=firstname, last_name=lastname, username=username, phone_number=phone_number, email=email, password=password)
+                    user = CustomUser.objects.create_user(is_admin= True,first_name=firstname, last_name=lastname, username=username, phone_number=phone_number, email=email, password=password)
                     user.save()
-                    student = Student.objects.create(user = user , add = add)
+                    student = Admin.objects.create(user = user , add = add)
                     student.save()
                     messages.success(request, 'Account created successfully')
                     return redirect('login')
@@ -168,16 +168,25 @@ def logout_user(request):
 
 @login_required(login_url='login')
 def dashboard(request):
-    email = request.user.email
-    username = request.user.username
-    firstname = request.user.first_name
-    phone_number = request.user.phone_number
-    lastname = request.user.last_name
-    data = {
-        'username' : username,
-        'email' : email,
-        'phone_number' : phone_number,
-        'firstname' : firstname,
-        'lastname' : lastname,
-    }
-    return render(request, 'accounts/dashboard.html', data)
+    if request.user.is_admin == True:
+        data = CustomUser.objects.all()
+        data = {
+            'data' : data,
+        }
+        return render(request, 'accounts/admindashboard.html' , data)
+    if request.user.is_teacher == True:
+        data = Student.objects.all()
+        data = {
+            'data' : data,
+        }
+        return render(request, 'accounts/teacherdashboard.html')
+    if request.user.is_student == True:
+        data1 = Teacher.objects.all()
+        
+        
+        return render(request, 'accounts/studentdashboard.html')
+   
+        
+  
+    
+

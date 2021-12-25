@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
-from .models import Student, Teacher, Admin
+from .models import Student, Teacher, Admin , Image
 class CustomUserAdmin(UserAdmin):
     """Define admin model for custom User model with no username field."""
     fieldsets = (
@@ -40,8 +40,14 @@ class MyTeacher(admin.ModelAdmin):
     search_fields = ('user', 'subject', 'add')
     list_filter = ('user', 'subject', 'add')
     list_display_links = ('user', 'subject','add')
-            
+class Myphoto(admin.ModelAdmin):
+    list_display = ('user', 'photo', 'date')            
+    list_display_links = ('user', 'photo', 'date')            
+    search_fields = ('user', 'photo', 'date')      
+    list_filter = ('user', 'photo', 'date')            
+          
 admin.site.register(get_user_model(), CustomUserAdmin)
 admin.site.register(Student, MyStudent)
 admin.site.register(Teacher, MyTeacher)
 admin.site.register(Admin, MyAdmin)
+admin.site.register(Image, Myphoto)

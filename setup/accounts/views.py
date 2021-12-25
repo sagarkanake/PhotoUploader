@@ -9,7 +9,8 @@ from .models import CustomUser, Student, Teacher, Admin
 # from django.contrib.auth.models import CustomUser
 from django.contrib import messages, auth
 from django.contrib.auth import authenticate, login, logout
-
+from .forms import ImageForm
+from .models import Image
 # Create your views here.
 def login(request):
     if request.method == 'POST':
@@ -169,22 +170,24 @@ def logout_user(request):
 @login_required(login_url='login')
 def dashboard(request):
     if request.user.is_admin == True:
-        data = CustomUser.objects.all()
-        data = {
-            'data' : data,
-        }
-        return render(request, 'accounts/admindashboard.html' , data)
+        if request.method == "POST":
+            form = ImageForm(request.POST, request.FILES)
+            form.user = request.user
+            if form.is_valid():
+                form.save()
+        form = ImageForm()
+        return render(request, 'accounts/admindashboard.html' , {'form': form,} )
     if request.user.is_teacher == True:
-        data = Student.objects.all()
-        data = {
-            'data' : data,
-        }
-        return render(request, 'accounts/teacherdashboard.html')
+      
+        form = ImageForm()
+        
+        return render(request, 'accounts/teacherdashboard.html', {'form' : form})
     if request.user.is_student == True:
-        data1 = Teacher.objects.all()
+        
+        form = ImageForm()
         
         
-        return render(request, 'accounts/studentdashboard.html')
+        return render(request, 'accounts/studentdashboard.html', {'form' : form})
    
         
   

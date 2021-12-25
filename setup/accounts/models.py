@@ -64,5 +64,13 @@ class Teacher(models.Model):
 class Admin(models.Model):
     user = models.OneToOneField(CustomUser, on_delete= models.CASCADE)
     add = models.CharField(max_length=255)
-          
-            
+    
+    
+def user_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/beat/author/<filename>
+    return 'media/{0}/{1}'.format(instance.user, filename)
+         
+class Image(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete= models.CASCADE)
+    photo = models.ImageField(upload_to=user_directory_path)
+    date = models.DateTimeField(auto_now_add=True)            

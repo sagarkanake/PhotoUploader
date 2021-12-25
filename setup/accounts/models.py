@@ -37,8 +37,28 @@ class CustomUser(AbstractUser):
     username = models.CharField(_('Username'),max_length=50,blank=True, unique=True)
     email = models.EmailField(_('email address'), unique=True)
     phone_number = models.CharField(max_length=12,unique=True, blank=True)
+    is_student = models.BooleanField(default= True)
+    is_teacher = models.BooleanField(default= False)
+    is_admin = models.BooleanField(default = False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
+    
+    
+class Student(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete= models.CASCADE)
+    standard = models.IntegerField()
+    add = models.CharField(max_length=255)
+    
+class Teacher(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete= models.CASCADE)
+    subject = models.CharField(max_length=255)
+    add = models.CharField(max_length=255)
+    
+class Admin(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete= models.CASCADE)
+    add = models.CharField(max_length=255)
+          
+            

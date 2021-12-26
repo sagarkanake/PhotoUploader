@@ -48,6 +48,7 @@
  *  Languages Used : Python , javascript , Html , CSs .
  *  Framework Used : Python Django Framework , Django Rest Framework .
 # Getting Started 
+ A multi user type login . each user has their own dashboard where they can upload multiple images . a models.Onetoone field is used to sepeatate admin , teacher , student. 
 Simple task i.e a project with user register + Login . Register page has name, phone_number, email(unique=True) .Created a welcome page showing name of respective logged in user.
 ## Prerequisites : 
   * Make sure you have all concepts cleared in python language .
@@ -118,6 +119,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install
 # Installation
 *  django = "*"
 *  django_rest_framework = "*"
+*  pillow = "*"
 
 
 ```bash

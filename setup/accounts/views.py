@@ -9,7 +9,6 @@ from .models import CustomUser, Student, Teacher, Admin
 # from django.contrib.auth.models import CustomUser
 from django.contrib import messages, auth
 from django.contrib.auth import authenticate, login, logout
-from .forms import ImageForm
 from .models import Image
 # Create your views here.
 def login(request):
@@ -22,7 +21,12 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.error(request, 'Your are Logged in')
-            return redirect('dashboard')
+            if user.is_admin == True:
+             return redirect('admindashboard')
+            if user.is_student == True:
+             return redirect('studentdashboard')
+            if user.is_teacher == True:
+             return redirect('teacherdashboard')
         else:
             messages.error(request, 'invalid credentials')
             return redirect('login')    
@@ -168,27 +172,54 @@ def logout_user(request):
     return redirect('login')
 
 @login_required(login_url='login')
-def dashboard(request):
-    if request.user.is_admin == True:
-        if request.method == "POST":
-            form = ImageForm(request.POST, request.FILES)
-            form.user = request.user
-            if form.is_valid():
-                form.save()
-        form = ImageForm()
-        return render(request, 'accounts/admindashboard.html' , {'form': form,} )
-    if request.user.is_teacher == True:
-      
-        form = ImageForm()
-        
-        return render(request, 'accounts/teacherdashboard.html', {'form' : form})
-    if request.user.is_student == True:
-        
-        form = ImageForm()
-        
-        
-        return render(request, 'accounts/studentdashboard.html', {'form' : form})
-   
+def admindashboard(request):
+        images = Image.objects.all().order_by('date')
+        data = {
+            'images': images,
+        }
+        if request.method == 'POST':
+            
+            prod = Image()
+            prod.user = request.user
+            if len(request.FILES) != 0:
+             prod.photo = request.FILES['image']
+
+             prod.save()
+             messages.success(request, "Product Added Successfully")
+            return render(request, 'accounts/admindashboard.html' , data )
+        return render(request, 'accounts/admindashboard.html' , data )
+    
+@login_required(login_url='login') 
+def teacherdashboard(request):    
+        teachers = Image.objects.filter(user=request.user).order_by('date')
+        data = {
+            'teachers' : teachers,
+        }
+        if request.method == 'POST':
+            prod = Image()
+            prod.user = request.user
+            if len(request.FILES) != 0:
+             prod.photo = request.FILES['image']
+             prod.save()
+             messages.success(request, "Product Added Successfully")
+            return render(request, 'accounts/teacherdashboard.html' , data )
+        return render(request, 'accounts/teacherdashboard.html' , data )
+
+@login_required(login_url='login')    
+def studentdashboard(request):
+        students = Image.objects.filter(user=request.user)
+        data = {
+            'students' : students,
+        }
+        if request.method == 'POST':
+            prod = Image()
+            prod.user = request.user
+            if len(request.FILES) != 0:
+             prod.photo = request.FILES['image']
+             prod.save()
+             messages.success(request, "Product Added Successfully")
+            return render(request, 'accounts/studentdashboard.html' , data  )
+        return render(request, 'accounts/studentdashboard.html' , data )
         
   
     

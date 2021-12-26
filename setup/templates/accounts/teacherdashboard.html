@@ -15,38 +15,47 @@
         <font color="FF9C33"><p style="display:inline">Hi,<b> <font color="FF9C33" style="font-size:30px" >{{username}} </font> </b>Hope you having a good day </p>
       </font>
       </h4>
+      <div class = "container " >
+        <div class = "py-5 text-center bg-secondary text-white">
+        <h1 class = "mb-3"> Upload Image </h1>
+        <form action = "{% url 'teacherdashboard' %}"  method = "POST" enctype="multipart/form-data"   >
+          {% csrf_token %} 
+          <input type = "file" name = "image">
+          <input type= "submit" class = "btn btn-danger" value= "Upload">
+        </form>
+      </div>
+      </div>
+    </section>
+    <section class="container mt-5 mb-5">
+      <h3 class="text-center">Latest On Board YTubers</h3>
+      <p class="pt-2 pb-3 text-center">YTubers who recently got onboard with us</p>
 
-      <div class="table-responsive- mt-3">
+      <div class="tubers grid">
+        {% for image in images %}
+        <!-- person 1 -->
+        <div class="card border-0 text-center">
+          <div>
+            <img src="{{ image.photo.url }} " class="card-img-top" alt="team-member">
 
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Sr.no</th>
-              <th scope="col">Users Name</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Phone Number</th>
-              <th scope="col">Email ID</th>
-            </tr>
-          </thead>
-          <tbody>
-            {%  for user in data %}
-            <tr>
-              <th scope="row">1</th>
-              <td><i>{{user.username}}<i></td>
-              <td>{{user.firstname}}</td>
-              <td>{{user.lastname}}</td>
-              <td>{{user.phone_number}}</td>
-              <td>{{user.email}}</td>
-              <td>{{user.add}}</td>
-              <td>
-                <div class="btn btn-accent">Go to Page </div>
-              </td>
-            </tr>
-            {%endfor%}
-            
-          </tbody>
-        </table>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Team Member One</h5>
+            <p class="card-text">Gaming</p>
+            <div class="person-description mt-2">
+              <button class="btn btn-accent"> City </button>
+              <button class="btn btn-accent"> Age </button>
+              <button class="btn btn-accent"> Height </button>
+            </div>
+            <div class="person-description mt-2">
+              <button class="btn btn-accent"> Solo </button>
+              <button class="btn btn-accent"> Canon </button>
+              <button class="btn btn-accent"> Subs </button>
+            </div>
+          </div>
+        </div>
+        <!-- person 1 -->
+       {% endfor %}
+
       </div>
 
     </section>

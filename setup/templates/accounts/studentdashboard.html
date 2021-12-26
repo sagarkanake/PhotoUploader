@@ -8,18 +8,55 @@
         Dashboard
       </h1>
     </div>
-    
+
     <section class="container mt-5">
       <h2 class="text-center">Welcome to Dashboard</h2>
       <h4 class="text-center text-white-50"> 
         <font color="FF9C33"><p style="display:inline">Hi,<b> <font color="FF9C33" style="font-size:30px" >{{username}} </font> </b>Hope you having a good day </p>
       </font>
       </h4>
+      <div class = "container " >
+        <div class = "py-5 text-center bg-secondary text-white">
+        <h1 class = "mb-3"> Upload Image </h1>
+        <form action = "{% url 'studentdashboard' %}" method = "POST" enctype="multipart/form-data"   >
+          {% csrf_token %} 
+          <input type = "file" name = "image">
+          <input type= "submit" class = "btn btn-danger" value= "Upload">
+        </form>
+      </div>
+      </div>
+    </section>
+    <section class="container mt-5 mb-5">
+      <h3 class="text-center">Latest On Board YTubers</h3>
+      <p class="pt-2 pb-3 text-center">YTubers who recently got onboard with us</p>
 
-     
-          
-        
-      
+      <div class="tubers grid">
+        {% for image in students %}
+        <!-- person 1 -->
+        <div class="card border-0 text-center">
+          <div>
+            <img src="{{ image.photo.url }} " class="card-img-top" alt="team-member">
+
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Team Member One</h5>
+            <p class="card-text">Gaming</p>
+            <div class="person-description mt-2">
+              <button class="btn btn-accent"> City </button>
+              <button class="btn btn-accent"> Age </button>
+              <button class="btn btn-accent"> Height </button>
+            </div>
+            <div class="person-description mt-2">
+              <button class="btn btn-accent"> Solo </button>
+              <button class="btn btn-accent"> Canon </button>
+              <button class="btn btn-accent"> Subs </button>
+            </div>
+          </div>
+        </div>
+        <!-- person 1 -->
+       {% endfor %}
+
+      </div>
 
     </section>
   </main>

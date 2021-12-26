@@ -12,7 +12,7 @@
     <section class="container mt-5">
       <h2 class="text-center">Welcome to Dashboard</h2>
       <h4 class="text-center text-white-50"> 
-        <font color="FF9C33"><p style="display:inline">Hi,<b> <font color="FF9C33" style="font-size:30px" >{{username}} </font> </b>Hope you having a good day </p>
+        <font color="FF9C33"><p style="display:inline">Hi, Our Admin <b> <font color="FF9C33" style="font-size:30px" >{{username}} </font> </b>Hope you having a good day </p>
       </font>
       </h4>
       <div class = "container " >
@@ -28,30 +28,69 @@
       </div>
     </section>
     <section class="container mt-5 mb-5">
-      <h3 class="text-center">Latest Uploaded Images </h3>
+      <h3 class="text-center">Latest Uploaded Images By All Admin </h3>
       <p class="pt-2 pb-3 text-center">Images who recently got on site</p>
 
       <div class="tubers grid">
-        {% for image in images %}
+        {% for admin in admins %}
         <!-- person 1 -->
         <div class="card border-0 text-center">
           <div>
-            <img src="{{ image.photo.url }} " class="card-img-top" alt="team-member">
+            <img src="{{ admin.photo.url }} " class="card-img-top" alt="team-member">
 
           </div>
           <div class="card-body">
-            <h5 class="card-title">Team Member One</h5>
-            <p class="card-text">Gaming</p>
-            <div class="person-description mt-2">
-              <button class="btn btn-accent"> City </button>
-              <button class="btn btn-accent"> Age </button>
-              <button class="btn btn-accent"> Height </button>
-            </div>
-            <div class="person-description mt-2">
-              <button class="btn btn-accent"> Solo </button>
-              <button class="btn btn-accent"> Canon </button>
-              <button class="btn btn-accent"> Subs </button>
-            </div>
+            <h5 class="card-title">Image Uploaded By</h5>
+            <p class="card-text">{{admin.user}}</p>
+            
+          </div>
+        </div>
+        <!-- person 1 -->
+       {% endfor %}
+
+      </div>
+
+    </section>
+    <section class="container mt-5 mb-5">
+      <h3 class="text-center">Latest Uploaded Images By All Teachers </h3>
+      <p class="pt-2 pb-3 text-center">Images who recently got on site</p>
+
+      <div class="tubers grid">
+        {% for teacher in teachers %}
+        <!-- person 1 -->
+        <div class="card border-0 text-center">
+          <div>
+            <img src="{{ teacher.photo.url }} " class="card-img-top" alt="team-member">
+
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Image Uploaded By</h5>
+            <p class="card-text">{{ teacher.user }}</p>
+            
+          </div>
+        </div>
+        <!-- person 1 -->
+       {% endfor %}
+
+      </div>
+
+    </section>
+    <section class="container mt-5 mb-5">
+      <h3 class="text-center">Latest Uploaded Images By All Students </h3>
+      <p class="pt-2 pb-3 text-center">Images who recently got on site</p>
+
+      <div class="tubers grid">
+        {% for student in students %}
+        <!-- person 1 -->
+        <div class="card border-0 text-center">
+          <div>
+            <img src="{{ student.photo.url }} " class="card-img-top" alt="team-member">
+
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Image Uploaded By</h5>
+            <p class="card-text">{{ student.user }}</p>
+            
           </div>
         </div>
         <!-- person 1 -->

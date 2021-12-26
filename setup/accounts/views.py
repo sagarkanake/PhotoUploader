@@ -173,10 +173,27 @@ def logout_user(request):
 
 @login_required(login_url='login')
 def admindashboard(request):
-        images = Image.objects.all().order_by('date')
+    
+        email = request.user
+        user = CustomUser.objects.get(email = email)
+        username = user.first_name
+        
+        alladmins = CustomUser.objects.filter(is_admin = True)
+        admins = Image.objects.filter(user__in = alladmins).order_by('date')
+        
+        allteachers = CustomUser.objects.filter(is_teacher = True)
+        teachers = Image.objects.filter(user__in = allteachers).order_by('date')
+        
+        allstudents = CustomUser.objects.filter(is_student = True)
+        students = Image.objects.filter(user__in = allstudents).order_by('date')
+        
         data = {
-            'images': images,
+            'username' : username,
+            'admins' : admins, 
+            'teachers' : teachers, 
+            'students' : students,
         }
+        
         if request.method == 'POST':
             
             prod = Image()
@@ -191,9 +208,16 @@ def admindashboard(request):
     
 @login_required(login_url='login') 
 def teacherdashboard(request):    
-        teachers = Image.objects.filter(user=request.user).order_by('date')
+        name = request.user
+        ex = CustomUser.objects.get(email=name)
+        username = ex.first_name
+        teachers = Image.objects.filter(user = request.user)
+        all = CustomUser.objects.filter(is_student = True)
+        students = Image.objects.filter(user__in = all)
         data = {
             'teachers' : teachers,
+            'username' : username,
+            'students' : students,
         }
         if request.method == 'POST':
             prod = Image()
@@ -207,9 +231,13 @@ def teacherdashboard(request):
 
 @login_required(login_url='login')    
 def studentdashboard(request):
+        name = request.user
+        ex = CustomUser.objects.get(email=name)
+        username = ex.first_name
         students = Image.objects.filter(user=request.user)
         data = {
             'students' : students,
+            'username' : username,
         }
         if request.method == 'POST':
             prod = Image()

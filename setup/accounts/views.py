@@ -36,36 +36,35 @@ def login(request):
     return render(request, 'accounts/login.html')
 
 def register(request):
-    if request.method == 'POST':
-        firstname = request.POST['firstname']
-        lastname = request.POST['lastname']
-        username = request.POST['username']
-        phone_number = request.POST['phone_number']
-        email = request.POST['email']
-        password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
+    # if request.method == 'POST':
+    #     firstname = request.POST['firstname']
+    #     lastname = request.POST['lastname']
+    #     username = request.POST['username']
+    #     phone_number = request.POST['phone_number']
+    #     email = request.POST['email']
+    #     password = request.POST['password']
+    #     confirm_password = request.POST['confirm_password']
         
-        if password == confirm_password:
-            if CustomUser.objects.filter(username=username).exists():
-                messages.error(request, 'Username exists')
-                return redirect('register')
-            else:
-                if CustomUser.objects.filter(email=email).exists():
-                    messages.error(request, 'Email already exists')
-                    return redirect('register')
-                else:
-                    user = CustomUser.objects.create_user(first_name=firstname, last_name=lastname, username=username, phone_number=phone_number, email=email, password=password)
-                    user.save()
-                    messages.success(request, 'Account created successfully')
-                    return redirect('login')
+    #     if password == confirm_password:
+    #         if CustomUser.objects.filter(username=username).exists():
+    #             messages.error(request, 'Username exists')
+    #             return redirect('register')
+    #         else:
+    #             if CustomUser.objects.filter(email=email).exists():
+    #                 messages.error(request, 'Email already exists')
+    #                 return redirect('register')
+    #             else:
+    #                 user = CustomUser.objects.create_user(first_name=firstname, last_name=lastname, username=username, phone_number=phone_number, email=email, password=password)
+    #                 user.save()
+    #                 messages.success(request, 'Account created successfully')
+    #                 return redirect('login')
                     
-        else:
-            messages.error(request, 'Password do not match')
-            return redirect('register')
-        
-        
+    #     else:
+    #         messages.error(request, 'Password do not match')
+    #         return redirect('register')
         
     return render(request, 'accounts/register.html')
+
 def studentregister(request):
     if request.method == 'POST':
         firstname = request.POST['firstname']
@@ -212,8 +211,9 @@ def teacherdashboard(request):
         ex = CustomUser.objects.get(email=name)
         username = ex.first_name
         teachers = Image.objects.filter(user = request.user)
-        all = CustomUser.objects.filter(is_student = True)
-        students = Image.objects.filter(user__in = all)
+        
+        allstudents = CustomUser.objects.filter(is_student = True)
+        students = Image.objects.filter(user__in = allstudents).order_by('date')
         data = {
             'teachers' : teachers,
             'username' : username,

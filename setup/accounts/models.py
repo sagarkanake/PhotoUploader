@@ -39,7 +39,7 @@ class CustomUser(AbstractUser):
     username = models.CharField(_('Username'),max_length=50,blank=True, unique=True)
     email = models.EmailField(_('email address'), unique=True)
     phone_number = models.CharField(max_length=12,unique=True, blank=True)
-    is_student = models.BooleanField(default= True)
+    is_student = models.BooleanField(default= False)
     is_teacher = models.BooleanField(default= False)
     is_admin = models.BooleanField(default = False)
     created_date = models.DateTimeField(default=datetime.now, blank=True)

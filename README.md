@@ -31,8 +31,13 @@
 ## After creation, your project should look like this:
 
 * setup
+     * media
      * accounts
         * api 
+        * models.py
+        * views.py
+        * urls.py
+        * admin.py
      * setup
      * static
      * templates
@@ -48,6 +53,10 @@
  *  Languages Used : Python , javascript , Html , CSs .
  *  Framework Used : Python Django Framework , Django Rest Framework .
 # Getting Started 
+ A photo Uploader application based on django framework .
+  All images are images stored in the respective user media directory. example : student/example@gmail.com/images-1.png
+(note : example@gmail.com is email id of login user )
+
  A multi user type login . each user has their own dashboard where they can upload multiple images . a models.Onetoone field is used to sepeatate admin , teacher , student. 
 Simple task i.e a project with user register + Login . Register page has name, phone_number, email(unique=True) .Created a welcome page showing name of respective logged in user.
 ## Prerequisites : 

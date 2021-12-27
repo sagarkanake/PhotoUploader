@@ -32,8 +32,8 @@
 
 * setup
      * media
-          ** 9284sagarkanake@gmaill.com
-              *** example.png
+          * 9284sagarkanake@gmaill.com
+              * example.png
      * accounts
         * api 
         * models.py
